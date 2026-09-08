@@ -4,7 +4,7 @@
 
 ## 📋 Pre-Flight Environment Context
 
-Your landing zone has already been bootstrapped with baseline infrastructure via [`infra.tf`](../../module_0/starter/infra.tf):
+Your landing zone has already been bootstrapped with baseline infrastructure:
 - **VPC & Subnets:** `cymbal-retail-vpc` and `cymbal-retail-subnet-<region>`.
   - Private Google Access is enabled on the subnet.
   - Outbound internet access is configured via Cloud NAT `cymbal-retail-nat`.
@@ -18,7 +18,7 @@ Your landing zone has already been bootstrapped with baseline infrastructure via
   - `order-anomaly-endpoint` with deployed order anomaly detection model.
   - `cashier-abuse-endpoint` with deployed cashier discount abuse detection model.
 - **Service Account:** Dedicated service account `cymbal-sa-data` has been provisioned with IAM permissions and should be used wherever a service account is required across your data pipeline.
-  - You should add additional IAM roles to this service account as part of your solution terraform code if needed. Use a separate `google_project_iam_member` resource to do so, **do not** modify `cymbal_sa_data_iam_roles` in [`infra.tf`](../../module_0/starter/infra.tf).
+  - You should add additional IAM roles to this service account as part of your solution terraform code if needed. Use a separate `google_project_iam_member` resource to do so, **do not** modify `cymbal_sa_data_iam_roles` in your original base infra deployment.
 
 ## 🛠️ Instructions
 
