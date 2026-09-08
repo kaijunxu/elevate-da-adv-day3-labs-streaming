@@ -45,14 +45,7 @@ You may need to add the following providers as you progress through the hands-on
 
 ### Step 1: Create local `terraform.tfvars`
 > [!IMPORTANT]
-> All steps must be run in the folder that contains this instructions file. Navigate to the folder using `cd /<REPOSITORY_ROOT>/module_2/starter`.
-
-Make a copy of the `terraform.tfvars` file used in module 0 and save it as `terraform.tfvars` in this directory.
-```bash
-cp ../../module_0/starter/terraform.tfvars terraform.tfvars
-```
-
----
+> All steps must be run in the folder that contains this instructions file.
 
 ### Step 2: Initialize Terraform
 
