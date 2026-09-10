@@ -84,9 +84,10 @@ resource "google_compute_instance" "kafka_client" {
     mkdir -p /opt/kafka-client
     gcloud storage cp gs://kaijun-elevate-kafka-client/stream_pos_generator.py /opt/kafka-client/stream_pos_generator.py
     gcloud storage cp gs://kaijun-elevate-kafka-client/stream_pos_requirements.txt /opt/kafka-client/stream_pos_requirements.txt
-    apt-get update
-    apt install -y python3-pip
-    pip install -r /opt/kafka-client/stream_pos_requirements.txt
+    apt-get update -o Acquire::Check-Valid-Until=false
+    apt-get install -y --fix-missing python3-distutils curl
+    curl -sS https://bootstrap.pypa.io/pip/3.9/get-pip.py | python3 -
+    pip3 install -r /opt/kafka-client/stream_pos_requirements.txt
     chmod -R 755 /opt/kafka-client
 
     # Write systemd service file
