@@ -4,7 +4,7 @@
 
 ## 📋 Pre-Flight Environment Context
 
-Your landing zone has already been bootstrapped with baseline infrastructure:
+Your landing zone has already been bootstrapped with baseline infrastructure on day 1:
 - **VPC & Subnets:** `cymbal-retail-vpc` and `cymbal-retail-subnet-<region>`.
   - Private Google Access is enabled on the subnet.
   - Outbound internet access is configured via Cloud NAT `cymbal-retail-nat`.
@@ -18,7 +18,7 @@ Your landing zone has already been bootstrapped with baseline infrastructure:
   - `order-anomaly-endpoint` with deployed order anomaly detection model.
   - `cashier-abuse-endpoint` with deployed cashier discount abuse detection model.
 - **Service Account:** Dedicated service account `cymbal-sa-data` has been provisioned with IAM permissions and should be used wherever a service account is required across your data pipeline.
-  - You should add additional IAM roles to this service account as part of your solution terraform code if needed. Use a separate `google_project_iam_member` resource to do so, **do not** modify `cymbal_sa_data_iam_roles` in your original base infra deployment.
+  - You should add additional IAM roles to this service account as part of your solution terraform code if needed. Use a separate `google_project_iam_member` resource to do so, **do not** modify `cymbal_sa_data_iam_roles` in `infra.tf` from day 1.
 
 ## 🛠️ Instructions
 
@@ -46,6 +46,10 @@ You may need to add the following providers as you progress through the hands-on
 ### Step 1: Create local `terraform.tfvars`
 > [!IMPORTANT]
 > All steps must be run in the folder that contains this instructions file.
+
+Make a copy of the `terraform.tfvars` file from day 1 to this directory. Alternatively, copy and rename [terraform.tfvars.sample](./terraform.tfvars.sample) and configure your `project_id` manually.
+
+---
 
 ### Step 2: Initialize Terraform
 

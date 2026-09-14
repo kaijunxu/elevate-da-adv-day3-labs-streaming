@@ -60,7 +60,7 @@ resource "google_compute_instance" "kafka_client" {
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11-bullseye-v20260727"
+      image = "debian-cloud/debian-13"
     }
   }
 
@@ -84,10 +84,9 @@ resource "google_compute_instance" "kafka_client" {
     mkdir -p /opt/kafka-client
     gcloud storage cp gs://kaijun-elevate-kafka-client/stream_pos_generator.py /opt/kafka-client/stream_pos_generator.py
     gcloud storage cp gs://kaijun-elevate-kafka-client/stream_pos_requirements.txt /opt/kafka-client/stream_pos_requirements.txt
-    sed -i '/bullseye-security/s/^/#/' /etc/apt/sources.list
     apt-get update
-    apt-get install -y --allow-downgrades python3-pkg-resources=52.0.0-4 python3-setuptools python3-pip python3-distutils
-    pip install -r /opt/kafka-client/stream_pos_requirements.txt
+    apt install -y python3-pip
+    pip install -r /opt/kafka-client/stream_pos_requirements.txt --break-system-packages
     chmod -R 755 /opt/kafka-client
 
     # Write systemd service file
